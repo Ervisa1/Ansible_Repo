@@ -1,0 +1,11 @@
+- name: Install mariadb
+  package:
+    name: ["mariadb-server","mariadb-common","mariadb-client"]
+    state: latest
+  when: ansible_distribution == ["Debian","Ubuntu"]
+- name: Enable mariadb
+  service:
+    name: mariadb
+    state: started
+    enabled: yes
+  when: ansible_distribution == ["Debian","Ubuntu"]

@@ -1,0 +1,17 @@
+- name: Install apache2
+  package:
+    name: apache2
+    state: latest
+  when: ansible_distribution == ["Debian","Ubuntu"]
+- name: Enable apache
+  service:
+    name: apache2
+    state: stopped
+    enabled: yes
+- name: put index on web servers
+  copy:
+    src: files/index.html
+    dest: /var/www/html/index.html
+    owner: root
+    group: root
+    mode: 644

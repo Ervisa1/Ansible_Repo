@@ -1,0 +1,8 @@
+- hosts: azureservers
+  become: true
+  roles:
+    - webservers
+- hosts: db
+  become: true
+  roles:
+    - db
